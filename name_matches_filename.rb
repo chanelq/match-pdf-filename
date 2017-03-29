@@ -13,16 +13,20 @@ def name_matches_filename(file_path)
   true
 end
 
-matches = 0
-total_files = 0
+def match_filenames
+  matches = 0
+  total_files = 0
 
-Dir['pdfs/*.pdf'].each do |f|
-  total_files += 1
-  if name_matches_filename(f)
-    matches += 1
-  else
-    puts "File: #{f} - Name is not included in the PDF text."
+  Dir['pdfs/*.pdf'].each do |f|
+    total_files += 1
+    if name_matches_filename(f)
+      matches += 1
+    else
+      puts "File: #{f} - Name is not included in the PDF text."
+    end
   end
+
+  puts "#{matches} of #{total_files} files match"
 end
 
-puts "#{matches} of #{total_files} files match"
+match_filenames
